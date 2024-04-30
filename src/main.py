@@ -172,7 +172,7 @@ def main():
       tokenizer.eos_token_id,
       device,
       beam_width=12,
-      temperature=args.temperature or 8.0,
+      temperature=args.temperature or 2.0,
       decay_repeated=True
     )
 
