@@ -34,3 +34,74 @@ Printing an instance of the [Transformer](https://github.com/mikecvet/annotated-
   	--> Dropout(dropout_rate=0.1)
 ```
 
+It was difficult to sufficiently train a model of this size on my Macbook Air, however the summarization task results are ~alright:
+
+```
+$ python3 src/main.py --temperature 2.0 --train 20
+epoch loss: 2122.236578941345
+Saved model data to transformer_state.data
+epoch loss: 1960.4350719451904
+Saved model data to transformer_state.data
+epoch loss: 1945.9114050865173
+Saved model data to transformer_state.data
+epoch loss: 1935.8571014404297
+(etc)
+
+test struct: {'document': 'the ruble fell to #,### here on friday from #,### on friday and the central bank intervened by selling ##.# million dollars , dealers said .', 'summary': 'ruble falls to #,### to the dollar', 'input_ids': tensor([  101,  1996, 14548,  2571,  3062,  2000,  1001,  1010,  1001,  1001,
+         1001,  2182,  2006,  5958,  2013,  1001,  1010,  1001,  1001,  1001,
+         2006,  5958,  1998,  1996,  2430,  2924, 21116,  2011,  4855,  1001,
+         1001,  1012,  1001,  2454,  6363,  1010, 16743,  2056,  1012,   102,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0]), 'attention_mask': tensor([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), 'labels': tensor([  101, 14548,  2571,  4212,  2000,  1001,  1010,  1001,  1001,  1001,
+         2000,  1996,  7922,   102,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+            0,     0,     0,     0,     0,     0])}
+labels: ['[CLS]', 'rub', '##le', 'falls', 'to', '#', ',', '#', '#', '#', 'to', 'the', 'dollar', '[SEP]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]', '[PAD]']
+
+(etc)
+
+next step candidates:
+	-9.81064919: [dollar rub french #, in falls to. at dollars million percent on - of billion euros january jobs]
+	-9.81797765: [dollar rub french #, in falls to. at dollars million on percent march - euros billion of trade]
+	-9.82840920: [dollar rub french #, in falls to. at dollars million percent on - of billion euros january]
+
+generated sequence IDs: [101, 7922, 14548, 2413, 1001, 1010, 1999, 4212, 2000, 1012, 2012, 6363, 2454, 3867, 2006, 1011, 1997, 4551, 19329, 2254, 5841, 102]
+tokens: ['[CLS]', 'dollar', 'rub', 'french', '#', ',', 'in', 'falls', 'to', '.', 'at', 'dollars', 'million', 'percent', 'on', '-', 'of', 'billion', 'euros', 'january', 'jobs', '[SEP]']
+expected tokens (labels): ['[CLS]', 'rub', '##le', 'falls', 'to', '#', ',', '#', '#', '#', 'to', 'the', 'dollar', '[SEP]', '[PAD]', '[PAD]',
+```
