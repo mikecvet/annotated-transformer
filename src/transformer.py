@@ -9,6 +9,13 @@ class Transformer(nn.Module):
   Implements a Transformer model for sequence-to-sequence tasks. This class combines the Transformer encoder and decoder 
   layers, embedding layers for input and output sequences, and a final linear layer to project decoder output to the target 
   vocabulary size.
+
+  Helpful references for this project:
+    https://arxiv.org/pdf/1706.03762
+    https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/readings/
+    http://nlp.seas.harvard.edu/annotated-transformer/
+    https://pi-tau.github.io/posts/transformer/
+    https://www.datacamp.com/tutorial/building-a-transformer-with-py-torch
   """
 
   def __init__(

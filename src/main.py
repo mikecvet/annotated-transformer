@@ -9,14 +9,6 @@ import torch
 from tqdm.auto import tqdm
 from torch.utils.data import DataLoader
 
-"""
-useful references:
-  https://www.datacamp.com/tutorial/building-a-transformer-with-py-torch
-  http://nlp.seas.harvard.edu/annotated-transformer/
-  https://pi-tau.github.io/posts/transformer/
-"""
-
-#BATCH_SIZE = 128
 BATCH_SIZE = 64
 MODEL_STATE_PATH = "transformer_state.data"
 
@@ -176,8 +168,7 @@ def main():
       tokenizer, 
       model, 
       t["input_ids"].to(device), 
-      #tokenizer.bos_token_id, 
-      tokenizer.pad_token_id,
+      tokenizer.bos_token_id, 
       tokenizer.eos_token_id,
       device,
       beam_width=12,
