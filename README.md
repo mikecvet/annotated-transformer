@@ -18,6 +18,8 @@ This model comes with some starter training code, using the [Gigawords](https://
  - Gradient clipping norm: `2.0`
  - Temperature: `2.0`
 
+The beam search implementation was copied from [mikecvet/beam](https://github.com/mikecvet/beam) and slightly modified
+
 Printing an instance of the [Transformer](https://github.com/mikecvet/annotated-transformer/blob/main/src/transformer.py) class:
 
 ```
